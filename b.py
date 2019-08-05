@@ -21,17 +21,19 @@ for filename in stkname.symbol:
 
 """
 Data interpolation
+(i) Insert 0 values on the first row if there is no data on Date 0.
+(ii) Insert values of the previous day if there is no data on the day, such as too old date or date on weekend.
 """
 n_idc = len(indicators)
 n_stk = len(stocks)
-
+#(i)
 for i in range(n_idc):
     if np.isnan(indicators[i].iloc[0,1]):
         indicators[i].iloc[0,1:] = 0
 for i in range(n_stk):
     if np.isnan(stocks[i].iloc[0,1]):
         stocks[i].iloc[0,1:] = 0
-
+#(ii)
 max_time = stocks[0].Date.max()
 
 for i in range(1, int(max_time)+1):

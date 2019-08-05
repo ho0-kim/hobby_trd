@@ -45,6 +45,7 @@ for stk in stocks:
 
 """
 Data interpolation
+(i) Add Date 0 to maximum date
 """
 n_idc = len(indicators)
 n_stk = len(stocks)
